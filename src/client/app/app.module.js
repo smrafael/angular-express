@@ -4,7 +4,8 @@
   angular.module('app', [
     'app.core',
     'app.widgets',
-    'app.layout'
+    'app.layout',
+    'app.home'
   ]);
 
 })();
