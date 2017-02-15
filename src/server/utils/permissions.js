@@ -1,5 +1,6 @@
 var jwt = require('jsonwebtoken');
 
+// Roles are not being verified yet
 module.exports.hasRoles = function(roles) {
   return function(req, res, next) {
     verifyToken(req, function(token) {
