@@ -10,7 +10,6 @@ var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
 var mongoose = require('mongoose');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 
 var environment = process.env.NODE_ENV;
 
@@ -24,12 +23,6 @@ console.log('PORT=' + port);
 console.log('NODE_ENV=' + environment);
 
 // passport config
-var Account = require('./models/Account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Routes
 app.use('/api/account', require('./routes/account'))
