@@ -2,7 +2,6 @@ var router = require('express').Router();
 var passport = require('passport');
 var jwt = require("jsonwebtoken");
 var UserModel = require('../models/User.js');
-var permissions = require('../utils/permissions.js');
 var cfg = require("../config.js");
 var auth = require("../auth.js")();
 

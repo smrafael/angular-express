@@ -2,19 +2,18 @@
     'use strict';
 
     angular
-        .module('app.home')
-        .controller('HomeController', Controller);
+        .module('app.login')
+        .controller('LoginController', LoginController);
 
-    Controller.$inject = [];
+    LoginController.$inject = [];
 
     /* @ngInject */
-    function Controller() {
+    function LoginController() {
         var vm = this;
 
         activate();
 
         function activate() {
-
         }
     }
 })();

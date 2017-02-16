@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app.home')
+        .module('app.user')
         .run(appRun);
 
     appRun.$inject = ['routerHelper'];
@@ -14,17 +14,13 @@
     function getStates() {
         return [
             {
-                state: 'home',
+                state: 'registeruser',
                 config: {
-                    url: '/',
-                    templateUrl: 'app/home/home.html',
-                    controller: 'HomeController',
+                    url: '/register-user',
+                    templateUrl: 'app/user/user.html',
+                    controller: 'UserController',
                     controllerAs: 'vm',
-                    title: 'home',
-                    settings: {
-                        nav: 1,
-                        content: '<i class="fa fa-dashboard"></i> Home'
-                    }
+                    title: 'Register User',
                 }
             }
         ];

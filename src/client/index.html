@@ -11,7 +11,7 @@
     }
   </style>
   <title ng-bind="title">
-    sanmina
+    Sanmina
   </title>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -27,15 +27,15 @@
 
   <!-- build:css styles/app.css -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="/.tmp/styles.css">
+  <link rel="stylesheet" href="/.tmp/general.css">
+  <link rel="stylesheet" href="/.tmp/login.css">
   <!-- endinject -->
   <!-- endbuild -->
 </head>
 
 <body>
-  <div>
-    <div ng-include="'app/layout/shell.html'"></div>
-  </div>
+
+  <div id="main-container" ui-view></div>
 
   <!-- build:js js/lib.js -->
   <!-- bower:js -->
@@ -59,9 +59,8 @@
   <script src="/src/client/app/blocks/logger/logger.module.js"></script>
   <script src="/src/client/app/blocks/router/router.module.js"></script>
   <script src="/src/client/app/core/core.module.js"></script>
-  <script src="/src/client/app/home/home.module.js"></script>
-  <script src="/src/client/app/layout/layout.module.js"></script>
-  <script src="/src/client/app/widgets/widgets.module.js"></script>
+  <script src="/src/client/app/login/login.module.js"></script>
+  <script src="/src/client/app/user/user.module.js"></script>
   <script src="/src/client/app/blocks/exception/exception-handler.provider.js"></script>
   <script src="/src/client/app/blocks/exception/exception.js"></script>
   <script src="/src/client/app/blocks/logger/logger.js"></script>
@@ -69,15 +68,11 @@
   <script src="/src/client/app/core/config.js"></script>
   <script src="/src/client/app/core/constants.js"></script>
   <script src="/src/client/app/core/core.route.js"></script>
-  <script src="/src/client/app/core/dataservice.js"></script>
-  <script src="/src/client/app/home/home.controller.js"></script>
-  <script src="/src/client/app/home/home.route.js"></script>
-  <script src="/src/client/app/layout/ht-sidebar.directive.js"></script>
-  <script src="/src/client/app/layout/ht-top-nav.directive.js"></script>
-  <script src="/src/client/app/layout/shell.controller.js"></script>
-  <script src="/src/client/app/layout/sidebar.controller.js"></script>
-  <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>
-  <script src="/src/client/app/widgets/ht-widget-header.directive.js"></script>
+  <script src="/src/client/app/login/login.controller.js"></script>
+  <script src="/src/client/app/login/login.router.js"></script>
+  <script src="/src/client/app/user/user.controller.js"></script>
+  <script src="/src/client/app/user/user.route.js"></script>
+  <script src="/src/client/app/user/user.service.js"></script>
   <!-- endinject -->
 
   <!-- inject:templates:js -->

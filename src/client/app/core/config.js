@@ -3,8 +3,15 @@
 
   var core = angular.module('app.core');
 
-  core.config(toastrConfig);
+  // 'config' as service
+  var config = {
+    appErrorPrefix: '[sanmina Error] ',
+    appTitle: 'Sanmina'
+  };
+  core.value('config', config);
 
+  // Toastr config
+  core.config(toastrConfig);
   toastrConfig.$inject = ['toastr'];
   /* @ngInject */
   function toastrConfig(toastr) {
@@ -12,15 +19,8 @@
     toastr.options.positionClass = 'toast-bottom-right';
   }
 
-  var config = {
-    appErrorPrefix: '[sanmina Error] ',
-    appTitle: 'Sanmina'
-  };
-
-  core.value('config', config);
-
+  // Providers
   core.config(configure);
-
   configure.$inject = ['$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider'];
   /* @ngInject */
   function configure($logProvider, routerHelperProvider, exceptionHandlerProvider) {
