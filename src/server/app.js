@@ -25,7 +25,7 @@ app.use('/api/account', require('./routes/account'))
 app.use('/api', require('./routes/general'));
 
 // mongoose
-mongoose.connect('mongodb://localhost/sanmina');
+mongoose.connect('mongodb://localhost/db-local');
 
 switch (environment) {
   case 'build':

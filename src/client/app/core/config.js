@@ -5,8 +5,8 @@
 
   // 'config' as service
   var config = {
-    appErrorPrefix: '[sanmina Error] ',
-    appTitle: 'Sanmina'
+    appErrorPrefix: '[Angular-Express Error] ',
+    appTitle: 'Angular-Express'
   };
   core.value('config', config);
 
