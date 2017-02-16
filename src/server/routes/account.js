@@ -1,13 +1,13 @@
 var router = require('express').Router();
 var passport = require('passport');
 var jwt = require("jsonwebtoken");
-var AccountModel = require('../models/Account');
+var UserModel = require('../models/User.js');
 var permissions = require('../utils/permissions.js');
 var cfg = require("../config.js");
 var auth = require("../auth.js")();
 
 router.post('/register', function(req, res) {
-  var account = new Account(req.body);
+  var account = new UserModel(req.body);
   account.save();
   res.status(200).send();
 });
@@ -17,8 +17,7 @@ router.post('/login', function(req, res) {
   var password = req.body.password;
 
   if (username && password) {
-
-    AccountModel.findOne({username: username, password: password},
+    UserModel.findOne({username: username, password: password},
       function(err, user) {
 
         if (err) {
