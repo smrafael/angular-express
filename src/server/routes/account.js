@@ -26,7 +26,7 @@ router.post('/login', function(req, res) {
         }
 
         if(user) {
-          var token = jwt.sign({id: user._id}, cfg.jwtSecret, { expiresIn: '20s' });
+          var token = jwt.sign({id: user._id}, cfg.jwtSecret, { expiresIn: '1h' });
           res.status(200).send({access_token: token});
         } else {
           res.sendStatus(401);
