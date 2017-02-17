@@ -17,10 +17,20 @@
                 state: 'registeruser',
                 config: {
                     url: '/register-user',
-                    templateUrl: 'app/user/user.html',
-                    controller: 'UserController',
+                    templateUrl: 'app/user/create/user_create.html',
+                    controller: 'UserCreateController',
                     controllerAs: 'vm',
                     title: 'Register User',
+                }
+            },
+            {
+                state: 'main.users',
+                config: {
+                    url: 'users',
+                    templateUrl: 'app/user/list/user_list.html',
+                    controller: 'UserListController',
+                    controllerAs: 'vm',
+                    title: 'Users Listing',
                 }
             }
         ];

@@ -14,6 +14,7 @@
     function getStates() {
         return [
             {
+                abstract: true,
                 state: 'main',
                 config: {
                     url: '/',

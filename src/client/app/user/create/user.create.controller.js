@@ -3,12 +3,12 @@
 
     angular
         .module('app.user')
-        .controller('UserController', UserController);
+        .controller('UserCreateController', UserCreateController);
 
-    UserController.$inject = ['UserService', '$state', 'logger'];
+    UserCreateController.$inject = ['UserService', '$state', 'logger'];
 
     /* @ngInject */
-    function UserController(UserService, $state, logger) {
+    function UserCreateController(UserService, $state, logger) {
         var vm = this;
         vm.createUser = createUser;
 

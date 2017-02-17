@@ -5,16 +5,17 @@
         .module('app.template')
         .controller('TemplateController', TemplateController);
 
-    TemplateController.$inject = [];
+    TemplateController.$inject = ['$state'];
 
     /* @ngInject */
-    function TemplateController() {
+    function TemplateController($state) {
         var vm = this;
 
         activate();
 
         function activate() {
           vm.menuVisible = true;
+          $state.go('main.users')
         }
     }
 })();

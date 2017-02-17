@@ -23,7 +23,7 @@
 
           function success(response) {
             SessionService.storeAccessToken(response.data);
-            $state.go('home');
+            $state.go('main');
           }
 
           function error() {
