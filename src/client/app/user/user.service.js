@@ -5,7 +5,7 @@
   .module('app.user')
   .service('UserService', UserService);
 
-  UserService.$inject = ['$http', 'serverAddress'];
+  UserService.$inject = ['$http'];
 
   /* @ngInject */
   function UserService($http, serverAddress) {
@@ -16,7 +16,7 @@
     return service;
 
     function createUser(newUser) {
-      return $http.post(serverAddress + '/account/register',
+      return $http.post('/api/account/register',
         {username: newUser.username, password: newUser.password});
     }
   }
