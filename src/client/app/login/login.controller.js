@@ -5,15 +5,31 @@
         .module('app.login')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = [];
+    LoginController.$inject = ['UserService', 'SessionService', 'logger', '$state'];
 
     /* @ngInject */
-    function LoginController() {
+    function LoginController(UserService, SessionService, logger, $state) {
         var vm = this;
+        vm.login = login;
 
         activate();
 
         function activate() {
         }
+
+        function login() {
+          UserService.login(vm.username, vm.password)
+            .then(success, error);
+
+          function success(response) {
+            SessionService.storeAccessToken(response.data);
+            $state.go('home');
+          }
+
+          function error() {
+            logger.error("Error creating user!", error);
+          }
+        }
+
     }
 })();

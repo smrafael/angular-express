@@ -17,7 +17,7 @@
             placeholder="Password" ng-model="vm.password" required>
         </div>
         <button type="button" class="btn btn-danger full-width"
-          ng-disabled="form.$invalid">Log In</button>
+          ng-disabled="form.$invalid" ng-click="vm.login()">Log In</button>
       </form>
     </div>
     <div class="panel-footer" style="text-align: center">New User? <a>Sign Up</a></div>
