@@ -11,6 +11,7 @@
     function LoginController(UserService, SessionService, logger, $state) {
         var vm = this;
         vm.login = login;
+        vm.signup = signup;
 
         activate();
 
@@ -29,6 +30,10 @@
           function error() {
             logger.error("Error creating user!", error);
           }
+        }
+
+        function signup() {
+          $state.go('registeruser');
         }
 
     }

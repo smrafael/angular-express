@@ -1,1 +1,23 @@
-Preceptor Listing
+<div ng-init="$parent.vm.template = {title: 'Users Listing', menunav: 'preceptors'}">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <td><b>Name</b></td>
+        <td><b>Username</b></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in vm.users track by $index">
+        <td ng-bind="user.name">
+
+        </td>
+        <td ng-bind="user.username">
+
+        </td>
+        <td>
+          <span class="glyphicon glyphicon-trash pointer" title="Remove"></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

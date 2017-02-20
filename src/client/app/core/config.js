@@ -21,14 +21,20 @@
 
   // Providers
   core.config(configure);
-  configure.$inject = ['$logProvider', 'routerHelperProvider', 'exceptionHandlerProvider'];
+  configure.$inject = ['$logProvider', 'routerHelperProvider'];
   /* @ngInject */
-  function configure($logProvider, routerHelperProvider, exceptionHandlerProvider) {
+  function configure($logProvider, routerHelperProvider) {
     if ($logProvider.debugEnabled) {
       $logProvider.debugEnabled(true);
     }
-    exceptionHandlerProvider.configure(config.appErrorPrefix);
     routerHelperProvider.configure({ docTitle: config.appTitle + ': ' });
+  }
+
+  // HttpInterceptor
+  core.config(httpInterceptorConfig);
+  httpInterceptorConfig.$inject = ['$httpProvider'];
+  function httpInterceptorConfig($httpProvider) {
+    $httpProvider.interceptors.push('HttpInterceptor');
   }
 
 })();

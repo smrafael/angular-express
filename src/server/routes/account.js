@@ -5,9 +5,17 @@ var UserModel = require('../models/User.js');
 var cfg = require("../config.js");
 var auth = require("../auth.js")();
 
+router.get('/', auth.authenticate(), function(req, res) {
+  UserModel.find({}, function(err, users) {
+    var result = users.map(function(user) {
+      return {name: user.name, username: user.username};
+    });
+    res.status(200).send(result);
+  });
+});
+
 router.post('/register', function(req, res) {
-  var account = new UserModel(req.body);
-  account.save();
+  new UserModel(req.body).save();
   res.status(200).send();
 });
 
@@ -39,10 +47,6 @@ router.post('/login', function(req, res) {
 
 router.get('/logout', function(req, res) {
   res.status(200).send();
-});
-
-router.get('/ping', auth.authenticate(), function(req, res){
-  res.status(200).send('ping!');
 });
 
 module.exports = router;

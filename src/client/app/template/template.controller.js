@@ -14,6 +14,7 @@
         activate();
 
         function activate() {
+          vm.template = {};
           vm.menuVisible = true;
           $state.go('main.users')
         }

@@ -5,16 +5,21 @@
         .module('app.user')
         .controller('UserListController', UserListController);
 
-    UserListController.$inject = [];
+    UserListController.$inject = ['UserService'];
 
     /* @ngInject */
-    function UserListController() {
-        var vm = this;
+    function UserListController(UserService) {
+      var vm = this;
 
-        activate();
+      activate();
 
-        function activate() {
+      function activate() {
+        UserService.list()
+          .then(success);
 
+        function success(response) {
+          vm.users = response.data;
         }
+      }
     }
 })();
