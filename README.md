@@ -1,4 +1,4 @@
-# sanmina
+# angular-express
 
 **Generated from HotTowel Angular**
 
