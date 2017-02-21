@@ -16,7 +16,9 @@
         function activate() {
           vm.template = {};
           vm.menuVisible = true;
-          $state.go('main.users')
+          if ($state.current.name == 'main') {
+            $state.go('.users')
+          }
         }
     }
 })();

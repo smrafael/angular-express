@@ -1,0 +1,38 @@
+<div ng-init="$parent.vm.template = {title: 'Record', menunav: 'rec'}">
+
+  <button type="button" class="btn btn-danger" ng-show="vm.status == 'stop'"
+    ng-click="vm.play()">
+    <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Play
+  </button>
+
+  <button type="button" class="btn btn-danger" ng-hide="vm.status == 'stop'"
+    ng-disabled="vm.status != 'play'" ng-click="vm.stop()">
+    <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
+  </button>
+
+  <button type="button" class="btn btn-danger" ng-disabled="vm.status != 'play'"
+    ng-click="vm.record()">
+    <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Rec
+  </button>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-6" style="text-align: center;">
+      <video id="player" autoplay></video>
+    </div>
+    <div class="col-md-6" style="text-align: center;" ng-show="vm.uploadAvailable">
+      <video id="recPlayer" controls></video>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-offset-6 col-md-6" style="text-align: center;">
+      <button type="button" class="btn btn-danger" ng-show="vm.uploadAvailable">
+        <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true">
+        </span> Upload
+      </button>
+    </div>
+  </div>
+
+</div>

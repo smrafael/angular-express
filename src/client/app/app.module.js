@@ -5,7 +5,8 @@
     'app.core',
     'app.login',
     'app.user',
-    'app.template'
+    'app.template',
+    'app.record'
   ]);
 
 })();
