@@ -3,9 +3,9 @@
 
   angular.module('app', [
     'app.core',
-    'app.widgets',
-    'app.layout',
-    'app.home'
+    'app.login',
+    'app.user',
+    'app.template'
   ]);
 
 })();

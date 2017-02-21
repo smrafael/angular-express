@@ -1,0 +1,57 @@
+<div class="full">
+
+  <div id="wrapper">
+
+    <div id="sidebar-wrapper">
+
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="#">
+            <b>Angular-Express</b>
+          </a>
+        </li>
+        <li style="text-indent: 10px;">
+          <a ng-class="{active: vm.template.menunav === 'home'}" >
+            <span class="glyphicon glyphicon-home"></span> Home
+          </a>
+        </li>
+        <li style="text-indent: 10px;">
+          <a ng-class="{active: vm.template.menunav === 'preceptors'}">
+            <span class="glyphicon glyphicon-user"></span> Users
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <span id="menu-toggle" class="glyphicon" aria-hidden="true"
+      ng-click="vm.menuVisible = !vm.menuVisible"
+      ng-class="{'glyphicon-chevron-left': vm.menuVisible,
+        'glyphicon-chevron-right': !vm.menuVisible}"></span>
+
+    <div id="page-content-wrapper">
+
+      <div class="page-header">
+        <h1><b><span ng-bind="vm.template.title"></span></b></h1>
+      </div>
+
+      <div class="panel panel-default" style="box-shadow: 3px 3px 3px rgba(0,0,0,0.3);">
+
+        <div class="panel-body">
+          <div ui-view></div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+$("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
+});
+</script>

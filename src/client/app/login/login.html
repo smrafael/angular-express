@@ -1,0 +1,27 @@
+<div id="login-container" style="padding-bottom: 100px">
+
+  <div id="login-panel" class="panel panel-default">
+    <div class="panel-body">
+
+      <h3 style="color: #D9534F">Log in to your account</h3>
+
+      <form style="padding: 25px;" name="form">
+        <div class="form-group">
+          <label class="sr-only" for="username">Username</label>
+          <input type="text" class="form-control" id="username"
+            placeholder="Username" ng-model="vm.username" required>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="password">Password</label>
+          <input type="password" class="form-control" id="password"
+            placeholder="Password" ng-model="vm.password" required>
+        </div>
+        <button type="button" class="btn btn-danger full-width"
+          ng-disabled="form.$invalid" ng-click="vm.login()">Log In</button>
+      </form>
+    </div>
+    <div class="panel-footer" style="text-align: center"
+      ng-click="vm.signup()">New User? <a>Sign Up</a></div>
+  </div>
+
+</div>

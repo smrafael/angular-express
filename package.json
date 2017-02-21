@@ -1,6 +1,6 @@
 {
-  "name": "sanmina",
-  "description": "sanmina Project Generated from HotTowel Angular",
+  "name": "angular-express",
+  "description": "Project Generated from HotTowel Angular",
   "version": "0.0.0",
   "scripts": {
     "init": "npm install",
@@ -15,8 +15,7 @@
     "mongoose": "^4.8.2",
     "morgan": "^1.1.1",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.0.0",
+    "passport-jwt": "^2.2.1",
     "serve-favicon": "^2.0.1"
   },
   "devDependencies": {

@@ -1,36 +1,52 @@
 var router = require('express').Router();
 var passport = require('passport');
-var Account = require('../models/Account');
-var jwt = require('jsonwebtoken');
-var permissions = require('../utils/permissions.js');
+var jwt = require("jsonwebtoken");
+var UserModel = require('../models/User.js');
+var cfg = require("../config.js");
+var auth = require("../auth.js")();
 
-router.post('/register', function(req, res) {
-  Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
-       if (err) {
-         res.status(500).send(err);
-       }
-
-       passport.authenticate('local')(req, res, function () {
-           res.status(200).send();
-       });
-   });
+router.get('/', auth.authenticate(), function(req, res) {
+  UserModel.find({}, function(err, users) {
+    var result = users.map(function(user) {
+      return {name: user.name, username: user.username};
+    });
+    res.status(200).send(result);
+  });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post('/register', function(req, res) {
+  new UserModel(req.body).save();
+  res.status(200).send();
+});
 
-  var token = jwt.sign({user: req.user.username}, 'secret', {expiresIn: '1h'});
-  req.user.access_token = token;
-  req.user.save();
+router.post('/login', function(req, res) {
+  var username = req.body.username;
+  var password = req.body.password;
 
-  res.status(200).send(token);
+  if (username && password) {
+    UserModel.findOne({username: username, password: password},
+      function(err, user) {
+
+        if (err) {
+          res.status(400).send(err);
+        }
+
+        if(user) {
+          var token = jwt.sign({id: user._id}, cfg.jwtSecret, { expiresIn: '1h' });
+          res.status(200).send({access_token: token});
+        } else {
+          res.sendStatus(401);
+        }
+      });
+
+  } else {
+    res.status(400).send('Username and Password are required');
+  }
+
 });
 
 router.get('/logout', function(req, res) {
   res.status(200).send();
-});
-
-router.get('/ping', permissions.hasRoles('admin'), function(req, res){
-  res.status(200).send('ping!');
 });
 
 module.exports = router;

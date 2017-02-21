@@ -9,34 +9,23 @@ var logger = require('morgan');
 var port = process.env.PORT || 8001;
 var four0four = require('./utils/404')();
 var mongoose = require('mongoose');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+var auth = require("./auth.js")();
 
 var environment = process.env.NODE_ENV;
 
+// Configs
 app.use(favicon(__dirname + '/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
-
-console.log('About to crank up node');
-console.log('PORT=' + port);
-console.log('NODE_ENV=' + environment);
-
-// passport config
-var Account = require('./models/Account');
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(auth.initialize());
 
 // Routes
 app.use('/api/account', require('./routes/account'))
 app.use('/api', require('./routes/general'));
 
 // mongoose
-mongoose.connect('mongodb://localhost/sanmina');
+mongoose.connect('mongodb://localhost/db-local');
 
 switch (environment) {
   case 'build':
